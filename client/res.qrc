@@ -34,5 +34,7 @@
         <file>Images/Tools.png</file>
         <file>Images/Wait.png</file>
         <file>Images/Warning.png</file>
+        <file>Images/lemon.png</file>
+        <file>Images/lemon.ico</file>
     </qresource>
 </RCC>

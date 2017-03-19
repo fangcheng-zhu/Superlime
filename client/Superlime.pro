@@ -4,7 +4,8 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT += core gui
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -24,11 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    highlighter.cpp \
+    codeeditor.cpp \
+    connection.cpp \
+    ssettingdialog.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    highlighter.h \
+    codeeditor.h \
+    connection.h \
+    ssettingdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    ssettingdialog.ui
 
 RESOURCES += \
     res.qrc
+
+DISTFILES +=

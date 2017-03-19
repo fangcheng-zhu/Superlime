@@ -5,39 +5,70 @@ Highlighter::Highlighter(QTextDocument *parent)
 {
     HighlightingRule rule;
 
-    keywordFormat.setForeground(Qt::darkBlue);
+    keywordFormat.setForeground(Qt::red);
     keywordFormat.setFontWeight(QFont::Bold);
     QStringList keywordPatterns;
-    keywordPatterns << "\\bchar\\b" << "\\bclass\\b" << "\\bconst\\b"
-                    << "\\bdouble\\b" << "\\benum\\b" << "\\bexplicit\\b"
-                    << "\\bfriend\\b" << "\\binline\\b" << "\\bint\\b"
-                    << "\\blong\\b" << "\\bnamespace\\b" << "\\boperator\\b"
-                    << "\\bprivate\\b" << "\\bprotected\\b" << "\\bpublic\\b"
-                    << "\\bshort\\b" << "\\bsignals\\b" << "\\bsigned\\b"
-                    << "\\bslots\\b" << "\\bstatic\\b" << "\\bstruct\\b"
-                    << "\\btemplate\\b" << "\\btypedef\\b" << "\\btypename\\b"
-                    << "\\bunion\\b" << "\\bunsigned\\b" << "\\bvirtual\\b"
-                    << "\\bvoid\\b" << "\\bvolatile\\b";
+    keywordPatterns << "\\babstract\\b" << "\\bassert\\b"
+                    << "\\bcase\\b" << "\\bcatch\\b" << "\\bcontinue\\b"
+                    << "\\bdefault\\b" << "\\benum\\b"
+                    << "\\bextends\\b" << "\\bfor\\b"
+                    << "\\bgoto\\b" << "\\binstanceof\\b"
+                    << "\\bnew\\b"
+                    << "\\bpackage\\b" << "\\breturn\\b"
+                    << "\\bstrictfp\\b"
+                    << "\\bswitch\\b" << "\\bsynchronized\\b"
+                    << "\\btransient\\b"
+                    << "\\btry\\b" << "\\bdo\\b" << "\\bfinal\\b"
+                    << "\\bif\\b" << "\\binterface\\b"
+                    << "\\bprivate\\b"
+                    << "\\bthis\\b" << "\\bvoid\\b"
+                    << "\\bbreak\\b" << "\\bclass\\b"
+                    << "\\bfinally\\b" << "\\bimplements\\b"
+                    << "\\bprotected\\b" << "\\bstatic\\b"
+                    << "\\bthrow\\b" << "\\bvolatile\\b"
+                    << "\\belse\\b" << "\\bconst\\b"
+                    << "\\bthis\\b" << "\\bvoid\\b"
+                    << "\\bimport\\b" << "\\bnative\\b"
+                    << "\\bpublic\\b" << "\\bsuper\\b"
+                    << "\\bthrows\\b" << "\\bwhile\\b"
+                    << "\\btrue\\b" << "\\bfalse\\b";
     foreach (const QString &pattern, keywordPatterns) {
         rule.pattern = QRegExp(pattern);
         rule.format = keywordFormat;
         highlightingRules.append(rule);
     }
 
+    varFormat.setForeground(Qt::blue);
+    varFormat.setFontWeight(QFont::Bold);
+    QStringList varPatterns;
+    varPatterns << "\\bbyte\\b" << "\\bboolean\\b"
+                << "\\bchar\\b"
+                    << "\\bfloat\\b" << "\\bdouble\\b"
+                    << "\\bshort\\b"
+                    << "\\bint\\b" << "\\bCharacter\\b"
+                    << "\\bInteger\\b"
+                    << "\\bDouble\\b" << "\\bBoolean\\b"
+                    << "\\bString\\b";
+    foreach (const QString &pattern, varPatterns) {
+        rule.pattern = QRegExp(pattern);
+        rule.format = varFormat;
+        highlightingRules.append(rule);
+    }
+
     classFormat.setFontWeight(QFont::Bold);
-    classFormat.setForeground(Qt::darkMagenta);
+    classFormat.setForeground(Qt::darkYellow);
     rule.pattern = QRegExp("\\bQ[A-Za-z]+\\b");
     rule.format = classFormat;
     highlightingRules.append(rule);
 
-    singleLineCommentFormat.setForeground(Qt::red);
+    singleLineCommentFormat.setForeground(Qt::darkGreen);
     rule.pattern = QRegExp("//[^\n]*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
-    multiLineCommentFormat.setForeground(Qt::red);
+    multiLineCommentFormat.setForeground(Qt::darkGreen);
 
-    quotationFormat.setForeground(Qt::darkGreen);
+    quotationFormat.setForeground(Qt::magenta);
     rule.pattern = QRegExp("\".*\"");
     rule.format = quotationFormat;
     highlightingRules.append(rule);
