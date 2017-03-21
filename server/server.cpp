@@ -6,7 +6,7 @@ Server::Server(QString port, QObject *parent) : QObject(parent)
 
     connect(server, SIGNAL(newConnection()), this, SLOT(newConnection()));
 
-    if (!server->listen(QHostAddress::Any, port.toInt()))
+    if (!server->listen(QHostAddress::Any, port.toUInt()))
     {
         qDebug() << "Server could not start";
     }
